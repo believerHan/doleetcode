@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 由于第一种方法时间复杂度最坏为 O（log n）.优化如下
- * 寻找第一个小于 target，和第一个 大于 target的 值。
+ * 寻找第一个左边的 target，和右边的 target的 值。
  */
 class Solution34M2 {
     public static void main(String[] args) {
@@ -51,7 +51,7 @@ class Solution34M2 {
             }
         }
 
-        return (nums[left] == target) ? left : -1;
+        return (nums[right] == target) ? right : -1;
     }
 
 }
