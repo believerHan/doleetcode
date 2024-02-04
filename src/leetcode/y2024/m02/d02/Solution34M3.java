@@ -31,7 +31,7 @@ class Solution34M3 {
                 left = mid + 1;
             } else if (nums[mid] == target) {
                 first = mid;
-          //      right = mid - 1;
+                right = mid - 1;
             }
         }
         if (first == -1) {
@@ -47,7 +47,7 @@ class Solution34M3 {
                 left = mid + 1;
             } else if (nums[mid] == target) {
                 second = mid;
-        //        left = mid + 1;
+                left = mid + 1;
             }
         }
         return new int[]{first, second};
