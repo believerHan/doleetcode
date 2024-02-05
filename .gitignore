@@ -5,6 +5,7 @@
 *.idea/
 *.ijconfig
 *.ijsettings
+out
 
 # Compiled Class Files
 *.class
