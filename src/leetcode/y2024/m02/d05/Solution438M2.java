@@ -14,24 +14,28 @@ class Solution438M2 {
     }
 
     public static List<Integer> findAnagrams(String s, String p) {
-        List<Integer> ans = new ArrayList<>();
-        int n = s.length(), m = p.length();
+
+        List<Integer> res = new ArrayList<>();
+        // 统计 p 中每个字母的个数
         int[] cnt = new int[26];
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < p.length(); i++) {
             cnt[p.charAt(i) - 'a']++;
         }
-        int a = 0;
-        for (int i = 0; i < 26; i++) {
-            if (cnt[i] != 0) a++;
+        int l = 0, r = 0;
+        //左右指针
+        while (r < s.length()) {
+            cnt[s.charAt(r) - 'a']--;
+            while (cnt[s.charAt(r) - 'a'] < 0) {
+                //说明存在不匹配的情况，需要进行cnt的恢复
+                cnt[s.charAt(l) - 'a']++;
+                l++;
+            }
+            if (r - l + 1 == p.length()) {
+                //出现这种情况一定是完全匹配，不然就会出现cnt[]<0,l就会右移动，也就不等于m。
+                res.add(l);
+            }
+            r++;
         }
-        for (int l = 0, r = 0, b = 0; r < n; r++) {
-            // 往窗口增加字符，进行词频的抵消操作，如果抵消后词频为 0，说明有一个新的字符词频与 p 完全相等
-            if (--cnt[s.charAt(r) - 'a'] == 0) b++;
-            // 若窗口长度超过规定，将窗口左端点右移，执行词频恢复操作，如果恢复后词频为 1（恢复前为 0），说明少了一个词频与 p 完全性相等的字符
-            if (r - l + 1 > m && ++cnt[s.charAt(l++) - 'a'] == 1) b--;
-            if (b == a) ans.add(l);
-        }
-        return ans;
-
+        return res;
     }
 }
