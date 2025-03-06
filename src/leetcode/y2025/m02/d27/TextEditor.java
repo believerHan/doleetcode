@@ -1,6 +1,6 @@
 package leetcode.y2025.m02.d27;
 
-//2296
+//2296  模拟
 class TextEditor {
 
     private StringBuilder sb;
@@ -38,12 +38,7 @@ class TextEditor {
         return sb.substring(index - 10, index);
     }
 
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder("123456");
-        //  sb.insert(2,"000");
-        sb.delete(2, 3);
-        System.out.println(sb);
-    }
+
 }
 
 /**
